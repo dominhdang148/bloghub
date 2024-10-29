@@ -47,10 +47,10 @@ public class Category {
     @CreationTimestamp
     private LocalDateTime createAt;
 
-    @ManyToMany(mappedBy = "categories")
-    private List<Novel> novels;
-
     @Column(name = "update_at", nullable = false)
     @UpdateTimestamp
     private LocalDateTime updateAt;
+
+    @ManyToMany(mappedBy = "categories")
+    private List<Novel> novels;
 }

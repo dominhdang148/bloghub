@@ -10,7 +10,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import com.dominhdang.bloghub_be.functions.category.Category;
 import com.dominhdang.bloghub_be.functions.chapter.Chapter;
-import com.dominhdang.bloghub_be.functions.user.User;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,7 +19,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -50,16 +48,12 @@ public class Novel {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "url_slug", nullable = false)
+    @Column(name = "url_slug", nullable = false, unique = false)
     private String urlSlug;
 
     @ManyToMany
     @JoinTable(name = "tbl_category_novel", joinColumns = @JoinColumn(name = "novel_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
     private List<Category> categories;
-
-    @ManyToOne
-    @JoinColumn(name = "author_id", nullable = false)
-    private User author;
 
     @Column(name = "image_url")
     private String imageUrl;

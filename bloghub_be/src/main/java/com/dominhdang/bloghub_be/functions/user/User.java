@@ -42,7 +42,6 @@ public class User {
     @Column(name = "full_name", nullable = false)
     private String fullName;
 
-    // Only used for Author => nullable
     @Column(name = "description")
     private String description;
 
