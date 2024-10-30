@@ -1,8 +1,8 @@
-package com.dominhdang.bloghub_be.functions.category;
+package com.dominhdang.bloghub_be.functions.language;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
+import java.util.List;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -14,7 +14,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,24 +24,24 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "tbl_category")
-public class Category {
+@Table(name = "tbl_language")
+public class Language {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(name = "name", nullable = false, unique = true)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "description", nullable = false)
-    private String description;
+    @Column(name = "short_name", nullable = false, unique = true)
+    private String shortName;
 
-    @Column(name = "url_slug", nullable = false, unique = true)
-    private String urlSlug;
+    @Column(name = "icon_url", nullable = false)
+    private String iconUrl;
 
     @Column(name = "create_at", nullable = false, updatable = false)
     @CreationTimestamp
@@ -51,6 +51,6 @@ public class Category {
     @UpdateTimestamp
     private LocalDateTime updateAt;
 
-    @ManyToMany(mappedBy = "categories")
+    @OneToMany(mappedBy = "language")
     private List<Novel> novels;
 }

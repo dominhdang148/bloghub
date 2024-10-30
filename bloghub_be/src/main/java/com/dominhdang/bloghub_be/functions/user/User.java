@@ -8,6 +8,7 @@ import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.dominhdang.bloghub_be.constants.UserGender;
 import com.dominhdang.bloghub_be.constants.UserStatus;
 import com.dominhdang.bloghub_be.functions.novel.Novel;
 import com.dominhdang.bloghub_be.functions.user_role.UserRole;
@@ -53,6 +54,9 @@ public class User {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @Column(name = "gender", nullable = false)
+    private UserGender gender;
 
     @Column(name = "avatarUrl")
     private String avatarUrl;

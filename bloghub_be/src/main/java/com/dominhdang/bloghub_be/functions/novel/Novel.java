@@ -9,7 +9,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.dominhdang.bloghub_be.functions.category.Category;
+import com.dominhdang.bloghub_be.functions.censor_tag.CensorTag;
 import com.dominhdang.bloghub_be.functions.chapter.Chapter;
+import com.dominhdang.bloghub_be.functions.language.Language;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,6 +21,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -68,4 +71,12 @@ public class Novel {
 
     @OneToMany(mappedBy = "novel")
     private List<Chapter> chapters;
+
+    @ManyToOne
+    @JoinColumn(name = "censor_tag_id", nullable = false)
+    private CensorTag censorTag;
+
+    @ManyToOne
+    @JoinColumn(name = "language_id", nullable = false)
+    private Language language;
 }
