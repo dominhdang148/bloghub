@@ -12,6 +12,7 @@ import com.dominhdang.bloghub_be.functions.category.Category;
 import com.dominhdang.bloghub_be.functions.censor_tag.CensorTag;
 import com.dominhdang.bloghub_be.functions.chapter.Chapter;
 import com.dominhdang.bloghub_be.functions.language.Language;
+import com.dominhdang.bloghub_be.functions.user.User;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -79,4 +80,8 @@ public class Novel {
     @ManyToOne
     @JoinColumn(name = "language_id", nullable = false)
     private Language language;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id", nullable = false)
+    private User author;
 }
