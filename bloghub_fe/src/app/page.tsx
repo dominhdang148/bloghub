@@ -1,7 +1,5 @@
-export default function Home() {
-    return (
-        <div>
-            <h1>Hello World</h1>
-        </div>
-    )
+import Home from './home/page';
+
+export default function Root() {
+    return <Home />;
 }
